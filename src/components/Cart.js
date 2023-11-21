@@ -98,7 +98,7 @@ const Cart = () => {
                           <tr>
                   <td className="product-thumbnail">
                     <img
-                      src={`https://shopping-cart-itbj.onrender.com/public/images/${pid.pImage}`}
+                      src={`https://shopping-cart-itbj.onrender.com/public/images/${pid?.pImage}`}
                       alt="Image"
                       className="img-fluid"
                     />
