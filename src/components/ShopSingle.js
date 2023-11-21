@@ -15,7 +15,7 @@ const ShopSingle = () => {
 
   const fetchSingleProduct = async () => {
     try {
-      const resp = await axios.get(`http://localhost:5000/products/single/${id}`)
+      const resp = await axios.get(`https://shopping-cart-itbj.onrender.com/products/single/${id}`)
       // console.log("single Product", resp.data)
       setSingleData(resp.data)
 
@@ -35,7 +35,7 @@ const ShopSingle = () => {
       const value = singleData.pPrice * quantity
       // console.log(value)
       // console.log(quantity)
-      const resp = await axios.post(`http://localhost:5000/insert-cart`, {
+      const resp = await axios.post(`https://shopping-cart-itbj.onrender.com/insert-cart`, {
         productId: id,
         userId: userId,
         totalPrice: value,
@@ -72,7 +72,7 @@ const ShopSingle = () => {
 
   const addWishList = async () => {
     try {
-      const resp = await axios.post(`http://localhost:5000/wishlist/insert-product`, {
+      const resp = await axios.post(`https://shopping-cart-itbj.onrender.com/wishlist/insert-product`, {
         productId: id,
         userId: userId
       })
@@ -110,7 +110,7 @@ const ShopSingle = () => {
 
             <div className="col-md-6">
 
-              <img src={`http://localhost:5000/public/images/${singleData.pImage}`} alt="Image" className="img-fluid" />
+              <img src={`https://shopping-cart-itbj.onrender.com/public/images/${singleData.pImage}`} alt="Image" className="img-fluid" />
 
             </div>
 

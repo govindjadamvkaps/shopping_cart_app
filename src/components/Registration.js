@@ -24,7 +24,7 @@ const Registration = () => {
     e.preventDefault();
 
     const resp = await axios.post(
-      "http://localhost:5000/sign-up",
+      "https://shopping-cart-itbj.onrender.com/sign-up",
       formData
       );
       console.log(resp.data.data);

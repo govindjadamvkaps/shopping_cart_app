@@ -19,7 +19,7 @@ const ContextCart = () => {
     // fetch All cetegories
     const fetchCategory = async () => {
         try {
-            const resp = await axios.get(`http://localhost:5000/categorys`)
+            const resp = await axios.get(`https://shopping-cart-itbj.onrender.com/categorys`)
             // console.log("category is",resp.data)
             setCategoryData(resp.data)
         } catch (error) {
@@ -30,7 +30,7 @@ const ContextCart = () => {
     // fetch product of category men
     const fetchMen = async () => {
         try {
-            const resp = await axios.get(`http://localhost:5000/products/category/6481778f84241f241e000daa`)
+            const resp = await axios.get(`https://shopping-cart-itbj.onrender.com/products/category/6481778f84241f241e000daa`)
             // console.log(resp.data)
             setMen(resp.data)
         } catch (error) {
@@ -41,7 +41,7 @@ const ContextCart = () => {
     // fetch product of category women
     const fetChWomen = async () => {
         try {
-            const resp = await axios.get(`http://localhost:5000/products/category/648177b984241f241e000e59`)
+            const resp = await axios.get(`https://shopping-cart-itbj.onrender.com/products/category/648177b984241f241e000e59`)
             setWomen(resp.data)
         } catch (error) {
             console.log('error in fetchig product of women', error)
@@ -51,7 +51,7 @@ const ContextCart = () => {
     // fetch product of category Children
     const fetchChildren = async () => {
         try {
-            const resp = await axios.get(`http://localhost:5000/products/category/648177c584241f241e000e5b`)
+            const resp = await axios.get(`https://shopping-cart-itbj.onrender.com/products/category/648177c584241f241e000e5b`)
             setChildren(resp.data)
         } catch (error) {
             console.log('error in fetchig product of children', error)
@@ -68,7 +68,7 @@ const ContextCart = () => {
    
     const fetchProduct = async (category) => {
         try {
-            const resp = await axios.get(`http://localhost:5000/products/${category}`,{
+            const resp = await axios.get(`https://shopping-cart-itbj.onrender.com/products/${category}`,{
                 headers:{
                     Authorization: `Bearer ${localStorage.getItem('usertoken')}`
                 }

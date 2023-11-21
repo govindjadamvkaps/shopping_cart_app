@@ -13,7 +13,7 @@ const Cart = () => {
   
   const fetchCart = async () => {
     try {
-      const resp = await axios.get(`http://localhost:5000/get-cart/${user_id}`)
+      const resp = await axios.get(`https://shopping-cart-itbj.onrender.com/get-cart/${user_id}`)
       // console.log("cart Dataaaaaaaaaa ==>", resp.data.data.productId)
       setCartData(resp.data.data.productId)
       setTotalPrice(resp.data.data)
@@ -47,7 +47,7 @@ const Cart = () => {
   const handleDelete = async(pid)=>{
     try {
       // alert(pid)
-      const resp = await axios.delete(`http://localhost:5000/delete-cart/${user_id}/${pid}`)
+      const resp = await axios.delete(`https://shopping-cart-itbj.onrender.com/delete-cart/${user_id}/${pid}`)
       console.log("delete response",resp)
       
     } catch (error) {
@@ -98,7 +98,7 @@ const Cart = () => {
                           <tr>
                   <td className="product-thumbnail">
                     <img
-                      src={`http://localhost:5000/public/images/${pid.pImage}`}
+                      src={`https://shopping-cart-itbj.onrender.com/public/images/${pid.pImage}`}
                       alt="Image"
                       className="img-fluid"
                     />

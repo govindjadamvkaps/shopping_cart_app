@@ -30,7 +30,7 @@ const Login = () => {
   const handleSubmit = async (e) => {
     try {
         e.preventDefault();
-        const resp = await axios.post("http://localhost:5000/login", loginData);
+        const resp = await axios.post("https://shopping-cart-itbj.onrender.com/login", loginData);
         // console.log(resp.data.token);
         // console.log(resp.data.admin._id)
         const tokenData = resp.data.token

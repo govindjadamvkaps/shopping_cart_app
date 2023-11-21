@@ -13,7 +13,7 @@ const { handleSubmit, register ,formState:{errors}, reset  }  =useForm()
 const postData = async(data)=>{
   // console.log("form data",data)
   try {
-    const  resp = await axios.post(`http://localhost:5000/post-message`,data)
+    const  resp = await axios.post(`https://shopping-cart-itbj.onrender.com/post-message`,data)
     console.log(resp.data.data)
 
     if(resp.status===StatusCodes.CREATED)

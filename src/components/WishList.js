@@ -11,7 +11,7 @@ const WishList = () => {
     const [data,setData] = useState([])
     const fetchProductOfWishList = async()=>{
         try {
-            const resp = await axios.get(`http://localhost:5000/wishlist/get-product/${userId}`)
+            const resp = await axios.get(`https://shopping-cart-itbj.onrender.com/wishlist/get-product/${userId}`)
             setData(resp.data.data.productId)
             // console.log("ewsaa", resp.data)
         } catch (error) {
@@ -24,7 +24,7 @@ const WishList = () => {
 
     const handleClick = async(pId)=>{
         try {
-            const resp = await axios.delete(`http://localhost:5000/wishlist/delete-product/${userId}/${pId}`)
+            const resp = await axios.delete(`https://shopping-cart-itbj.onrender.com/wishlist/delete-product/${userId}/${pId}`)
             // console.log(resp.data)
 
             if(resp.status===StatusCodes.OK)
@@ -33,7 +33,7 @@ const WishList = () => {
                     position:"top-center"
                 })
             }
-            const res = await axios.get(`http://localhost:5000/wishlist/get-product/${userId}`)
+            const res = await axios.get(`https://shopping-cart-itbj.onrender.com/wishlist/get-product/${userId}`)
             setData(res.data.data.productId)     
 
         } catch (error) {
@@ -64,7 +64,7 @@ const WishList = () => {
             return (
               <Col lg={4} className="mt-4">
                 <div className="card" style={{width: "18rem"}}>
-                  <img src={`http://localhost:5000/public/images/${curItem .pImage}`} height="500px" width="50px" className="card-img-top" alt="..." />
+                  <img src={`https://shopping-cart-itbj.onrender.com/public/images/${curItem .pImage}`} height="500px" width="50px" className="card-img-top" alt="..." />
                   <div className="card-body">
                     <h4 className="card-title">{curItem.pName}</h4>
                     <h5 className="card-title">Price &#8377;{curItem .pPrice}</h5>

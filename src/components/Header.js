@@ -19,7 +19,7 @@ const Header = () => {
 
   const fetchCart = async()=>{
     try {
-      const resp  = await axios.get(`http://localhost:5000/get-cart/${user_id}`)
+      const resp  = await axios.get(`https://shopping-cart-itbj.onrender.com/get-cart/${user_id}`)
       // console.log("header response",resp.data.data)
       setCartData(resp.data.data.productId)
 
@@ -30,7 +30,7 @@ const Header = () => {
 
   const fetchWishList = async() =>{
     try {
-      const resp = await axios.get(`http://localhost:5000/wishlist/get-product/${user_id}`)
+      const resp = await axios.get(`https://shopping-cart-itbj.onrender.com/wishlist/get-product/${user_id}`)
       // console.log("wishlist..:=>", resp.data)
       setWishListData(resp.data.data.productId)
     } catch (error) {

@@ -20,7 +20,7 @@ const Checkout = () => {
 
   const fetchCart = async () => {
     try {
-      const resp = await axios.get(`http://localhost:5000/get-cart/${user_id}`)
+      const resp = await axios.get(`https://shopping-cart-itbj.onrender.com/get-cart/${user_id}`)
       setCartData(resp.data.data)
       setProductData(resp.data.data.productId)
       setAmount(resp.data.data.totalPrice)
@@ -61,7 +61,7 @@ const Checkout = () => {
     // try {
       
      console.log(amount)
-      const res = await axios.post('http://localhost:5000/payment/create-checkout-session', {
+      const res = await axios.post('https://shopping-cart-itbj.onrender.com/payment/create-checkout-session', {
         userId:userId,
         amount:amount,
         cartId:cartData
@@ -77,7 +77,7 @@ const Checkout = () => {
 
     // try {
       console.log("checkoutdaata", data)
-      const resp = await axios.post(`http://localhost:5000/post-checkout`, {data,userId:userId})
+      const resp = await axios.post(`https://shopping-cart-itbj.onrender.com/post-checkout`, {data,userId:userId})
       console.log("response of billing details", resp)
       
       if (resp.status === StatusCodes.CREATED) {

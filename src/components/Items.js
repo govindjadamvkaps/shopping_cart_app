@@ -9,7 +9,7 @@ const Items = ({ pImage, pName, pDescription, pPrice, _id }) => {
                     <figure className="block-4-image">
                         <NavLink href="/shop-single">
                             <img
-                                src={`http://localhost:5000/public/images/${pImage}`}
+                                src={`https://shopping-cart-itbj.onrender.com/public/images/${pImage}`}
                                 alt="Image placeholder"
                                 className="img-fluid"
                             />

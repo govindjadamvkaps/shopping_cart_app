@@ -8,7 +8,7 @@ const Payment = ()=> {
     const handleSubmit = async(e)=> {
         e.preventDefault();
         try {
-            const res = await axios.post('http://localhost:5000/payment/create-checkout-session', {
+            const res = await axios.post('https://shopping-cart-itbj.onrender.com/payment/create-checkout-session', {
             // user: (JSON.parse(Cookies.get('user')))._id
             });
 

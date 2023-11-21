@@ -12,7 +12,7 @@ const Shop = () => {
   const [productData, setProductData] = useState([])
   const fetchProduct = async () => {
     try {
-      const resp = await axios.get(`http://localhost:5000/products`)
+      const resp = await axios.get(`https://shopping-cart-itbj.onrender.com/products`)
       // console.log(resp.data.data)
       setProductData(resp.data.data)
 
