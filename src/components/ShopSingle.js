@@ -12,19 +12,43 @@ const ShopSingle = () => {
   const history = useNavigate()
   const [quantity, setQuantity] = useState(1)
   const [singleData, setSingleData] = useState([])
+  const [image, setImage] = useState()
+  const [productName, setProductName] = useState()
+  const [productPrice, setProdctPrice] = useState()
+  const [productDiscription, setProductDiscription] = useState()
 
   const fetchSingleProduct = async () => {
     try {
       const resp = await axios.get(`https://shopping-cart-itbj.onrender.com/products/single/${id}`)
       // console.log("single Product", resp.data)
       setSingleData(resp.data)
-
+      setImage(resp.data.pImage)
+      setProductName(resp.data.pName)
+      setProdctPrice(resp.data.pPrice)
+      setProductDiscription(resp.data.pDescription)
     } catch (error) {
       console.log("error in finding single product", error)
     }
 
 
   }
+
+useEffect(() => {
+  if(productName && productPrice){
+    // console.log("if condition")
+    console.log("productName",productName)
+    console.log("productPrice",productPrice)
+
+    window.dataLayer.push('event', 'enter_shop_page', {
+      // page_path: `/shop-single/${_id}`, // Replace with the actual path of your shop single page
+      event_category: 'Page Interaction',
+      event_label: 'Enter shop Page',
+      product_name: productName,
+      product_price: productPrice
+      
+    });
+  }
+}, [productName,productPrice])
 
   useEffect(() => {
     fetchSingleProduct()
