@@ -16,17 +16,18 @@ const Checkout = () => {
   const [cartData, setCartData] = useState([])
   const user_id = localStorage.getItem("_id")
   const countryData = ["Afghanistan", "India", "Algeria", "bangladesh", "Ghana", "Albania", "Bahrain", "Colombia", "Dominican Republic"]
-
+  const [cart_Id,setCart_Id] = useState()
 
   const fetchCart = async () => {
     try {
       const resp = await axios.get(`https://shopping-cart-itbj.onrender.com/get-cart/${user_id}`)
+      // console.log(resp.data.data)
       setCartData(resp.data.data)
       setProductData(resp.data.data.productId)
       setAmount(resp.data.data.totalPrice)
-      
+      setCart_Id(resp.data.data._id)
       // console.log("CartData response",resp.data.data)
-      // console.log("product data response", resp.data.data.productId)
+      // console.log("product data response", resp.data.data.totalPrice)
       
 
     } catch (error) {
@@ -37,7 +38,7 @@ const Checkout = () => {
   useEffect(() => {
     fetchCart()
   }, [cartData])
-
+// console.log(cart_Id,"cart_Id")
 
   // const totalCart = () => {
   //   if (cartData.length === 0) {
@@ -64,13 +65,15 @@ const Checkout = () => {
       const res = await axios.post('https://shopping-cart-itbj.onrender.com/payment/create-checkout-session', {
         userId:userId,
         amount:amount,
-        cartId:cartData
+        cartId:cartData,
+        cart_Id: cart_Id
       // user: (JSON.parse(Cookies.get('user')))._id
       });
 
       if(res.data.url){
-          window.location.href = res.data.url;
+          window.location.href = `${res.data.url}`;
       }
+      console.log("res.data.url",res.data.url)
   // } catch (error) {
   //     console.log('Error while making payment : ', error.message);
   // }
