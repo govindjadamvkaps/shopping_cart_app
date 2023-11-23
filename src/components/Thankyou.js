@@ -33,29 +33,74 @@ const Thankyou = () => {
     fetchCartData();
   }, []);
 
-  useEffect(() => {
-    if (cartData) {
-      console.log(productData, "productData");
-      const productName = productData?.map((product, index) => {
-        return product.pid.pName;
-      });
-      setSingleProduct(...productName);
-      // console.log("singleProduct", singleProduct);
-      console.log("productName", ...productName);
-      // console.log("thankyou if condtion");
-      const pNames ={...productName}
-      console.log("pnames",pNames)
-      window.dataLayer.push("event", "enter_thankyou_page", {
-        // page_path: `/shop-single/${_id}`, // Replace with the actual path of your shop single page
+  // useEffect(() => {
+  //   if (cartData) {
+  //     // console.log(productData, "productData");
+  //     const productName = productData?.map((product, index) => {
+  //       return product.pid.pName;
+  //     });
+  //     setSingleProduct(...productName);
+  //     // console.log("singleProduct", singleProduct);
+  //     // console.log("productName", ...productName);
+  //     // console.log("thankyou if condtion");
+  //     // const pNames ={...productName}
+  //     // console.log("pnames",pNames)
+
+  //     console.log("Before dataLayer.push", {
+  //       event_category: "Page Interaction",
+  //       event_label: "Enter thankyou Page",
+  //       total_price: cartData.totalPrice,
+  //       product_quantity: cartData.quantity,
+  //       products_name: productName,
+  //       debug_mode: true,
+  //     });
+
+
+  //     window.dataLayer.push("event", "enter_thankyou_page", {
+  //       // page_path: `/shop-single/${_id}`, // Replace with the actual path of your shop single page
+  //       event_category: "Page Interaction",
+  //       event_label: "Enter thankyou Page",
+  //       total_price: cartData.totalPrice,
+  //       product_quantity: cartData.quantity,
+  //       products_name: productName,
+  //       debug_mode: true
+  //     });
+  //     console.log("After dataLayer.push");
+  //   }
+  // }, [cartData]);
+
+useEffect(() => {
+  if (cartData) {
+    const productName = productData?.map((product, index) => {
+      return product.pid.pName;
+    });
+
+    const script = document.createElement("script");
+    script.innerHTML = `
+      window.dataLayer = window.dataLayer || [];
+      window.dataLayer.push({
+        event: "enter_thankyou_page",
         event_category: "Page Interaction",
         event_label: "Enter thankyou Page",
-        total_price: cartData.totalPrice,
-        product_quantity: cartData.quantity,
-        products_name: productName,
-        debug_mode: true
+        total_price: "${cartData.totalPrice}",
+        product_quantity: "${cartData.quantity}",
+        products_name: ${JSON.stringify(productName)},
+        payment_details: {
+          userId: "${userId}",
+          amount: "${amount}",
+          cart_Id: "${cart_Id}",
+        },
+        debug_mode: true,
       });
-    }
-  }, [cartData]);
+    `;
+
+    document.head.appendChild(script);
+  }
+}, [cartData, userId, amount, cart_Id, productData]);
+
+// ...
+
+
 
   return (
     <>
